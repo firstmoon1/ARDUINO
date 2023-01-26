@@ -1,0 +1,49 @@
+
+#include <Servo.h>
+
+Servo motor;
+#define joy_digital 2
+#define ver A0
+#define hor A1
+
+float vertical=0,horizontal=0,pwm1=0,dig_val=0;
+int state=1;
+void setup() {
+
+ Serial.begin(9600);
+ pinMode(ver, INPUT);
+ pinMode(hor, INPUT);
+ pinMode(joy_digital, INPUT);
+ motor.attach(3);
+}
+
+void loop() {
+  /*
+  if(digitalRead(joy_digital)){
+    while(digitalRead(joy_digital)){
+      delay(100);
+    }
+    state=!state;
+  }
+  */
+  if(state==1){
+    delay(500);
+    //vertical=analogRead(ver);
+    //vertical=map(vertical,0,1023,0,180);
+    horizontal=analogRead(hor);
+    horizontal=map(horizontal,0,1023,0,180);
+    //Serial.print("vertical :");Serial.println(ver);
+    Serial.print("horizontal :");Serial.println(horizontal);
+    //Serial.print("vertical :");Serial.println(vertical);
+    //motor.write(horizontal);
+    for(int i=0;i<255;i++){
+      motor.write(i);
+      delay(10);
+    }
+    for(int i=255;i>=0;i--){
+      motor.write(i);
+      delay(10);
+    }
+  }
+
+}

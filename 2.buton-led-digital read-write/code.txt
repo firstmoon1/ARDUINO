@@ -1,0 +1,25 @@
+
+#define but 2
+#define led 3
+int state=0;
+
+void setup() {
+  
+  pinMode(but, INPUT);
+  pinMode(led, OUTPUT);
+  Serial.begin(115200);
+
+}
+
+void loop() {
+  
+  if(digitalRead(but)){
+    while(digitalRead(but)){
+      delay(100);
+    }
+    state=!state;
+    digitalWrite(led,state); // state 1=HIGH yada 0=LOW olur 
+  }
+
+
+}

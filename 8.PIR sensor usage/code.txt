@@ -1,0 +1,16 @@
+#define pir 8
+
+void setup() {
+  pinMode(pir, INPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+ 
+ if(digitalRead(pir)){
+   Serial.println("pir is active.");
+ }else{
+   Serial.println("pir is deactive.");
+ }
+  
+}

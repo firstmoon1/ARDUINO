@@ -1,0 +1,33 @@
+#define blue 6
+#define purple 5
+#define yellow 3
+#define pb A0
+#define py A1
+#define pp A2
+int b=0,y=0,p=0;
+void setup() {
+
+  Serial.begin(115200);
+  pinMode(blue, OUTPUT);
+  pinMode(purple, OUTPUT);
+  pinMode(yellow, OUTPUT);
+  pinMode(pb, INPUT);
+  pinMode(py, INPUT);
+  pinMode(pp, INPUT);
+  
+}
+
+void loop() {
+  b=analogRead(pb);
+  p=analogRead(pp);
+  y=analogRead(py);
+
+  b=map(b,0,1023,0,255);
+  p=map(p,0,1023,0,255);
+  y=map(y,0,1023,0,255);
+
+  analogWrite(purple,p);
+  analogWrite(yellow,y);
+  analogWrite(blue,b);
+
+}

@@ -1,0 +1,42 @@
+
+#define buz 8
+#define trig 7
+#define echo 6
+int max_range=50,min_range=0,measured=0;
+
+void setup() {
+  pinMode(buz, OUTPUT);
+  pinMode(trig, OUTPUT);
+  pinMode(echo, INPUT);
+}
+
+// bu function ile degeri alıyoruz pwm signal olarak,
+// mesafeyi ölcüyor  zaman birimi ile
+int mesafe(int maxrange,int minrange){
+  long duration,distance;
+  digitalWrite(trig, 0);// LOW da yazabilirsin
+  delayMicroseconds(2);
+  digitalWrite(trig, HIGH);
+  delayMicroseconds(2);
+  digitalWrite(trig, LOW);
+
+  duration=pulseIn(echo,HIGH);
+  distance=duration/58.2;
+  delay(50);
+  if(distance >= maxrange || distance <= minrange){
+    return 0;
+  }
+  return distance ;
+}
+
+void melodi(int dly){
+    tone(buz,440); // özel bir calma stili
+    delay(dly);
+    noTone(buz); // digital degeri 0'a cekiyor
+    delay(dly);
+}
+
+void loop() {
+  measured=mesafe(max_range,min_range);
+  melodi(measured*10);
+}

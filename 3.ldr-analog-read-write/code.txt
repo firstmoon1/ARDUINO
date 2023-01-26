@@ -1,0 +1,25 @@
+
+#define ldr_digital 2
+#define ldr_analog A0
+#define led 3
+float val_analog=0;
+int val_digital=0;
+void setup() {
+  Serial.begin(115200); //ekrana printlemek için kullanıyoruz 
+  pinMode(led,OUTPUT);
+  pinMode(ldr_analog, INPUT);
+  pinMode(ldr_digital, INPUT);
+
+}
+
+void loop() {
+  val_digital=digitalRead(ldr_digital);
+  val_analog=analogRead(ldr_analog);
+  val_analog=map(val_analog,0,1022,0,255);
+  Serial.print("val_analog :");Serial.println(val_analog);//val,val1 felan yapamazsın
+  Serial.print("val_digital :");Serial.println(val_digital);//her println 1 deger alır içine
+  
+  analogWrite(led,val_analog);
+
+
+}

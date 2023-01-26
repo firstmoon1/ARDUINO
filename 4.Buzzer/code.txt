@@ -1,0 +1,26 @@
+
+#define buz 11
+int i;
+void setup() {
+
+  Serial.begin(115200);
+  pinMode(buz, OUTPUT);
+
+}
+
+void loop() {
+ 
+ 
+  for(i=0;i<255;i=i+10){
+
+      Serial.print("i:");Serial.println(i);
+      analogWrite(buz,i);
+      delay(100);
+  }
+  for(i=255;i>=0;i=i-10){
+      Serial.print("i:");;Serial.println(i);
+      analogWrite(buz,i);
+      delay(100);
+  }
+
+}
