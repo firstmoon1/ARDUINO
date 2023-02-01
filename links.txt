@@ -1,0 +1,4 @@
+https://www.circuito.io/blog/arduino-uno-pinout/
+
+
+https://www.arduino.cc/reference/en/
