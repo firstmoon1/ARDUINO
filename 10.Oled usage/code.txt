@@ -20,7 +20,7 @@ void setup() {
   display.clearDisplay();
   display.setTextSize(2);
   display.setTextColor(WHITE);
-  display.setCursor(5, 5); // Y AND X AXIS
+  display.setCursor(5, 5); // X AND Y AXIS
   display.print("FIRST moon");
   display.setCursor(5, 25);
   display.print("RIGHT");
