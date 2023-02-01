@@ -1,0 +1,38 @@
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+#include <Wire.h>
+
+
+
+Adafruit_SSD1306 display = Adafruit_SSD1306(128, 64, &Wire);
+
+void setup() {
+  Serial.begin(115200);
+  
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)){
+    Serial.println("Failed.");
+  }else
+    Serial.println("Not failed.");
+  
+  display.display();
+  delay(2000);
+  display.clearDisplay();
+  display.setTextSize(2);
+  display.setTextColor(WHITE);
+  display.setCursor(5, 5); // Y AND X AXIS
+  display.print("FIRST moon");
+  display.setCursor(5, 25);
+  display.print("RIGHT");
+  display.setCursor(5, 50);
+  display.print("LEFT");
+
+  display.display();
+  delay(3000);
+  
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
