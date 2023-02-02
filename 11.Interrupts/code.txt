@@ -1,0 +1,37 @@
+// links 
+//https://www.arduino.cc/reference/en/language/functions/external-interrupts/attachinterrupt/
+//http://www.elektrobot.net/arduino-ile-interrupt-kullanimi-ve-uygulamalari/
+// uno için digital 2 ve 3 pinleri sadece interruptdır, layout'una bakarsan eger
+// INT0 ve INT1 'ler interrupt pinlerini ifade eder.
+#define but 2
+#define led 13
+int i=0,j=0,k=0;
+void setup() {
+  pinMode(led, OUTPUT);
+  attachInterrupt(digitalPinToInterrupt(2),interrupt_function,RISING); // RISING,FALLING,CHANGE
+  //attachInterrupt(2,interrupt_function,RISING);
+  digitalWrite(led, LOW);
+  Serial.begin(115200);
+}
+
+void loop() {
+  if(digitalRead(but)){
+    while(digitalRead(but)){
+      //k++;
+      //Serial.print("k :");Serial.println(k);
+      
+    }
+
+  }
+
+}
+
+void interrupt_function(){
+  //j++;
+  i=!i;
+  Serial.print("i :");Serial.println(i);
+  //Serial.print("j :");Serial.println(j);
+  digitalWrite(led,i);
+  
+  
+}

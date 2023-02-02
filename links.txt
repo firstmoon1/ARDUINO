@@ -1,4 +1,13 @@
-https://www.circuito.io/blog/arduino-uno-pinout/
+https://www.circuito.io/blog/arduino-uno-pinout/      uno board layout
+https://www.arduino.cc/reference/en/       commands
+http://www.elektrobot.net/arduino-ile-interrupt-kullanimi-ve-uygulamalari/     interrupts
 
 
-https://www.arduino.cc/reference/en/
+
+
+
+
+
+
+
+
