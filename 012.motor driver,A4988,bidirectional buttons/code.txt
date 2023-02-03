@@ -1,0 +1,89 @@
+// link
+// https://lastminuteengineers.com/a4988-stepper-motor-driver-arduino-tutorial/
+
+
+#define led 13
+#define start_stop_buton 12 
+#define motor_direction_button 11
+int state=0,direction=0;
+
+// Define pin connections & motor's steps per revolution
+const int dirPin = 2; // direction
+const int stepPin = 3; // motor hız control pin
+const int stepsPerRevolution = 200;
+
+void setup()
+{
+	Serial.begin(9600);
+	pinMode(led, OUTPUT);
+	pinMode(start_stop_buton, INPUT);
+	pinMode(motor_direction_button, INPUT);
+
+	// Declare pins as Outputs
+	pinMode(stepPin, OUTPUT);
+	pinMode(dirPin, OUTPUT);
+	digitalWrite(dirPin, HIGH); // direction clokwise ,low yaparsan counterclockwise olur.
+}
+
+void loop()
+{	
+
+	if(digitalRead(motor_direction_button)){
+		while(digitalRead(motor_direction_button)){
+			delay(100);
+		}
+		direction=!direction;
+		Serial.print("direction :");Serial.println(direction);
+	}
+	if(digitalRead(start_stop_buton)){
+		while(digitalRead(start_stop_buton)){
+			delay(100);
+		}
+		state=!state;
+		Serial.print("state :");Serial.println(state);
+
+		if(state){
+			
+			digitalWrite(led, state);
+			// Set motor direction clockwise
+		/*
+			// Spin motor slowly
+			for(int x = 0; x < stepsPerRevolution; x++)
+			{
+				digitalWrite(stepPin, HIGH);
+				delayMicroseconds(2000);
+				digitalWrite(stepPin, LOW);
+				delayMicroseconds(2000);
+			}
+			delay(1000); // Wait a second
+			
+			// Set motor direction counterclockwise
+			digitalWrite(dirPin, LOW);
+
+			// Spin motor quickly
+			for(int x = 0; x < stepsPerRevolution; x++)
+			{
+				digitalWrite(stepPin, HIGH);
+				delayMicroseconds(1000);// high,low, pulse miktarına göre motor hızı belirlenir.
+				digitalWrite(stepPin, LOW);
+				delayMicroseconds(1000);
+			}
+			delay(1000); // Wait a second
+		*/
+
+
+			
+		}
+	}
+	// sürekli clockwise yönüne dogru dönsün. buton ile stop start yapalım
+	if(state){
+		digitalWrite(dirPin, direction);
+		digitalWrite(stepPin, HIGH);
+		delayMicroseconds(2000);
+		digitalWrite(stepPin, LOW);
+		delayMicroseconds(2000);
+	}
+
+	
+	
+}
