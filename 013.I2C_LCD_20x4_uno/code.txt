@@ -1,0 +1,26 @@
+
+#include <LiquidCrystal_I2C.h>
+
+#define lcd_row 20
+#define lcd_column 4
+
+LiquidCrystal_I2C lcd(0x27, lcd_row, lcd_column);
+
+void setup() {
+  lcd.init();
+  lcd.backlight();
+  lcd.setCursor(1, 0);
+  lcd.print("stm32 > arduino");
+  lcd.setCursor(4, 1);
+  lcd.print("hakem > fb");
+  lcd.setCursor(0, 2);
+  lcd.println("cem'e kin besleyen");
+  lcd.setCursor(0,3);
+  lcd.print("eyup");
+  
+}
+
+void loop() {
+  lcd.setCursor(16, 3);
+  lcd.print(millis() / 1000);
+}
